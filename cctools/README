@@ -1,0 +1,5 @@
+cctools Apple's cross-compiling toolchain ported to Linux
+
+xar is optional dep, already exist in info file but you can skip installation if you don't need it.
+Version explanation: Assume VERSION=1024.3cctools+955.13ld64
+this means cctools version is 1024.3 and ld64 version is 955.13

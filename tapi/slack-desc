@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+    |-----handy-ruler------------------------------------------------------|
+tapi: tapi (Apple TAPI library)
+tapi:
+tapi: TAPI is a Text-based Application Programming Interface. It replaces
+tapi: the Mach-O Dynamic Library Stub files in Apple's SDKs to reduce the
+tapi: SDK size even further.
+tapi: The text-based dynamic library stub file format (.tbd) is a human
+tapi: readable and editable YAML text file. The TAPI projects uses the
+tapi: LLVM YAML parser to read those files and provides this functionality
+tapi: to the linker as a dynamic library.
+tapi:
+tapi: https://github.com/tpoechtrager/apple-libtapi
