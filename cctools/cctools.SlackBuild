@@ -2,32 +2,12 @@
 
 # Slackware build script for cctools
 
-# Ioannis Anagnostakis
-# All rights reserved.
-#
-# Redistribution and use of this script, with or without modification, is
-# permitted provided that the following conditions are met:
-#
-# 1. Redistributions of this script must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-#
-#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
-#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
-#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=cctools
-VERSION=${VERSION:-1024.3cctools+955.13ld64}
+VERSION=${VERSION:-1030.6.3cctools+956.6ld64}
 SRCNAM=cctools-port
-SRC_COMMIT=eea1c9ee2a3a386d96898b39feaa62a58a33f82a
+SRC_COMMIT=e5dfc5633cb9060a94d16b8d78a01eb0b3620021
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -75,10 +55,12 @@ find . ! -type l -type d ! -perm 755 -exec chmod -f 755 {} +
 find . ! -type l -type f -perm /111 ! -perm 755 -exec chmod -f 755 {} +
 find . ! -type l -type f ! -perm /111 ! -perm 644 -exec chmod -f 644 {} +
 
+cd cctools
+
+./autogen.sh
+
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-cd cctools
-./autogen.sh
 ./configure \
   --prefix=/usr \
   --with-llvm-config=/usr/bin/llvm-config \
@@ -87,8 +69,9 @@ cd cctools
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --target=$ARCH-apple-darwin
 
-make
-make install DESTDIR=$PKG
+# Override the compiler variable right during the execution of make and finger cross
+make CC="clang -std=gnu11"
+DESTDIR=$PKG make install
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
