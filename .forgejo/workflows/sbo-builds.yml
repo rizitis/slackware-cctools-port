@@ -35,7 +35,7 @@ on:
           dependencies here.
         required: false
         type: string
-        default: ""
+        default: "libarchive"
 # We add here only core Slackware packages we need for the build and their deps. In case all these are not installed on container image we use.
 # We DONT add here SBo depentencies, these will auto tracked, build and install from  slk_sbo-ci.sh and slk_sbo-pkg.sh
 
