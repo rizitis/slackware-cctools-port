@@ -88,13 +88,13 @@ jobs:
           source slk-ci.sh
           BUILDDIR="${GITHUB_WORKSPACE}" bash slk_sbo-ci.sh
 
-      - name: Install SBo dependencies
+      - name: Install SBo and local dependencies
         run: |
           set -a
           source slk-ci.sh
           BUILDDIR="${GITHUB_WORKSPACE}" bash slk_sbo-pkg.sh
 
-      - name: Build package
+      - name: Build main package
         id: build
         run: |
           source slk-ci.sh
