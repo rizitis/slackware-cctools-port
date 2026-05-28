@@ -19,7 +19,7 @@ echo "DEBUG: LOCAL_DEPS='$LOCAL_DEPS'"
         while IFS= read -r local_dep_name || [ -n "$local_dep_name" ]; do
             tmp=$(mktemp -d)
             mkdir -p "$tmp/repo"
-            cp "${local_dep_name}/${local_dep_name}.info" "${local_dep_name}/${local_dep_name}.SlackBuild" "$tmp/repo/"
+            cp "${local_dep_name}/${local_dep_name}.info" "${local_dep_name}/slack-desc" "${local_dep_name}/${local_dep_name}.SlackBuild" "$tmp/repo/"
             pushd "$tmp/repo" || exit 1
             source "${local_dep_name}.info"
             _log "Downloading source for ${local_dep_name}..."
