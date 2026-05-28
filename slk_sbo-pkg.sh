@@ -9,9 +9,10 @@ DEPS_FILE="$JUST_NAME".dep
 LOCAL_DEPS="$DEPS_FILE"_local
 
 build_local() {
-          ls -la "$LOCAL_DEPS"
-          echo "PWD=$PWD"
-          echo "LOCAL_DEPS=$LOCAL_DEPS"
+echo "DEBUG: LOCAL_DEPS='$LOCAL_DEPS'"
+    echo "DEBUG: test -f result: $(test -f "$LOCAL_DEPS" && echo EXISTS || echo NOT_FOUND)"
+    echo "DEBUG: PWD=$(pwd)"
+    cat "$LOCAL_DEPS"
     if [ ! -f "$LOCAL_DEPS" ]; then
         _log "no local deps found for $JUST_NAME"
     else
