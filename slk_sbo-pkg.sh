@@ -6,7 +6,7 @@ sbo_txt_cache="/tmp/SLACKBUILDS.TXT"
 SBSCRIPT="$(find "${BUILDDIR}" -maxdepth 1 -name '*.SlackBuild' | head -1)"
 JUST_NAME=$(basename "$SBSCRIPT" .SlackBuild)
 DEPS_FILE="$JUST_NAME".dep
-LOCAL_DEPS="$JUST_NAME"_local
+LOCAL_DEPS="$DEPS_FILE"_local
 
 build_local() {
     if [ ! -f "$LOCAL_DEPS" ]; then

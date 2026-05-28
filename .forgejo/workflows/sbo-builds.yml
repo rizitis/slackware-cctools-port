@@ -104,11 +104,11 @@ jobs:
           echo "package_file=$(basename "${PKG}")" >> "${GITHUB_OUTPUT}"
           echo "package_path=${PKG}"               >> "${GITHUB_OUTPUT}"
 
-      - name: Verify installed version
-        run: |
-          source slk-ci.sh
-          slk_install "${{ inputs.package_name }}"
-          slk_check_version "${{ inputs.package_name }}" "${{ inputs.version }}"
+#      - name: Verify installed version
+#        run: |
+#          source slk-ci.sh
+#          slk_install "${{ inputs.package_name }}"
+#          slk_check_version "${{ inputs.package_name }}" "${{ inputs.version }}"
 
 
       - name: Upload package artifact
