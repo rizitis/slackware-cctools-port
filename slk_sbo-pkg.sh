@@ -16,7 +16,7 @@ echo "DEBUG: LOCAL_DEPS='$LOCAL_DEPS'"
     if [ ! -f "$LOCAL_DEPS" ]; then
         _log "no local deps found for $JUST_NAME"
     else
-        while IFS= read -r local_dep_name; do
+        while IFS= read -r local_dep_name || [ -n "$local_dep_name" ]; do
             tmp=$(mktemp -d)
             mkdir -p "$tmp/repo"
             cp "${local_dep_name}/${local_dep_name}.info" "${local_dep_name}/${local_dep_name}.SlackBuild" "$tmp/repo/"
@@ -56,7 +56,7 @@ if [ ! -f "$DEPS_FILE" ]; then
 else
     build_local
     fetch_sbo_txt
-    while IFS= read -r dep_name; do
+    while IFS= read -r dep_name || [ -n "$dep_name" ]; do
         [ -z "$dep_name" ] && continue
         _log "Looking up '${dep_name}' in SBo..."
         location=$(grep -A5 "^SLACKBUILD NAME: ${dep_name}$" "$sbo_txt_cache" \
