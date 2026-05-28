@@ -25,7 +25,7 @@ on:
           successful build and as a label in the uploaded artifact name.
         required: true
         type: string
-        default: "1030.6.3cctools+956.6ld64"
+        default: "1030.6.3_956.6"
 
       build_deps:
         description: >
