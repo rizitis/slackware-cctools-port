@@ -1,5 +1,5 @@
 PRGNAM="cctools"
-VERSION="1030.6.3cctools+956.6ld64"
+VERSION="1030.6.3_956.6"
 HOMEPAGE="https://github.com/tpoechtrager/cctools-port"
 DOWNLOAD="https://github.com/tpoechtrager/cctools-port/archive/e5dfc5633cb9060a94d16b8d78a01eb0b3620021/cctools-port-e5dfc5633cb9060a94d16b8d78a01eb0b3620021.tar.gz"
 MD5SUM="34bf2d435b0b2de6c2941c0948b38f53"
